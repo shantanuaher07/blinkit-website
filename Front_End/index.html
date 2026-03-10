@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Blinkit Clone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <h1 class="logo">blinkit</h1>
+        <input type="text" placeholder="Search for products...">
+        <button onclick="login()">Login</button>
+    </nav>
+
+    <!-- Banner -->
+    <section class="banner">
+        <h2>Groceries delivered in 10 minutes ⚡</h2>
+    </section>
+
+    <!-- Products -->
+    <section class="products">
+        <div class="card">
+            <img src="https://via.placeholder.com/150">
+            <h3>Milk</h3>
+            <p>₹50</p>
+            <button onclick="addToCart('Milk')">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/150">
+            <h3>Bread</h3>
+            <p>₹30</p>
+            <button onclick="addToCart('Bread')">Add to Cart</button>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
