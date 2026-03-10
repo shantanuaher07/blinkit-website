@@ -1,5 +1,8 @@
-package main.java.com.blinkit.repository;
+package com.blinkit.repository;
 
-public class OrderRepository {
-    
+import org.springframework.data.jpa.repository.JpaRepository;
+import com.blinkit.model.Order;
+
+public interface OrderRepository extends JpaRepository<Order, Integer> {
+
 }

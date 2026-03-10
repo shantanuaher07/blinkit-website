@@ -1,5 +1,8 @@
-package main.java.com.blinkit.repository;
+package com.blinkit.repository;
 
-public class UserRepository {
-    
+import org.springframework.data.jpa.repository.JpaRepository;
+import com.blinkit.model.User;
+
+public interface UserRepository extends JpaRepository<User, Integer> {
+
 }

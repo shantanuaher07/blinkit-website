@@ -1,5 +1,8 @@
-package main.java.com.blinkit.repository;
+package com.blinkit.repository;
 
-public class CartRepository {
-    
+import org.springframework.data.jpa.repository.JpaRepository;
+import com.blinkit.model.Cart;
+
+public interface CartRepository extends JpaRepository<Cart, Integer> {
+
 }
