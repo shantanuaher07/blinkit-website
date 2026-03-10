@@ -1,5 +1,8 @@
-package main.java.com.blinkit.repository;
+package com.blinkit.repository;
 
-public class ProductRepository {
-    
+import org.springframework.data.jpa.repository.JpaRepository;
+import com.blinkit.model.Product;
+
+public interface ProductRepository extends JpaRepository<Product, Integer> {
+
 }
