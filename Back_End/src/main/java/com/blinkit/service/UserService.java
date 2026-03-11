@@ -1,21 +1,23 @@
 package com.blinkit.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.blinkit.model.User;
+import com.blinkit.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
 
-    private List<String> users = new ArrayList<>();
+    @Autowired
+    private UserRepository repository;
 
-    public String registerUser(String user) {
-        users.add(user);
-        return "User registered successfully";
+    public User registerUser(User user){
+        return repository.save(user);
     }
 
-    public List<String> getUsers() {
-        return users;
+    public List<User> getAllUsers(){
+        return repository.findAll();
     }
 }

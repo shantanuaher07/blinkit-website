@@ -1,22 +1,26 @@
 package com.blinkit.controller;
 
+import com.blinkit.model.User;
+import com.blinkit.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import java.util.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
 
-    List<String> users = new ArrayList<>();
+    @Autowired
+    private UserService service;
 
-    @PostMapping("/signup")
-    public String signup(@RequestBody String user) {
-        users.add(user);
-        return "User Registered Successfully";
+    @PostMapping("/register")
+    public User register(@RequestBody User user){
+        return service.registerUser(user);
     }
 
     @GetMapping
-    public List<String> getUsers() {
-        return users;
+    public List<User> getUsers(){
+        return service.getAllUsers();
     }
 }

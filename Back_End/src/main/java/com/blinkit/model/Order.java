@@ -2,12 +2,15 @@ package com.blinkit.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "orders")   // ✅ Fix: rename table
 public class Order {
 
     @Id
     private int id;
+
     private int userId;
     private double totalPrice;
 

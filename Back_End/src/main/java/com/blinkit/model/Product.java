@@ -1,32 +1,22 @@
 package com.blinkit.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Product {
 
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String name;
     private double price;
-    private String category;
+    private int quantity;
 
-    public Product() {}
+    public Product(){}
 
-    public Product(int id, String name, double price, String category) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.category = category;
-    }
-
-    public int getId() {
+    public Long getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -45,11 +35,11 @@ public class Product {
         this.price = price;
     }
 
-    public String getCategory() {
-        return category;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }
