@@ -337,3 +337,17 @@ cursor:pointer;
 .card button:hover{
 background:#096b18;
 }
+
+.cart-card{
+background:white;
+padding:15px;
+border-radius:10px;
+text-align:center;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.cart-card img{
+width:100px;
+height:100px;
+object-fit:contain;
+}
