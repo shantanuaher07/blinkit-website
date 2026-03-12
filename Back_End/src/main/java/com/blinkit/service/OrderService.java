@@ -1,21 +1,36 @@
 package com.blinkit.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.blinkit.model.Order;
+import com.blinkit.model.Product;
+import com.blinkit.repository.OrderRepository;
+import com.blinkit.repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class OrderService {
 
-    private List<String> orders = new ArrayList<>();
+    @Autowired
+    private OrderRepository orderRepository;
 
-    public String placeOrder(String order) {
-        orders.add(order);
-        return "Order placed successfully";
+    @Autowired
+    private ProductRepository productRepository;
+
+    public Order placeOrder(Order order) {
+
+        Product product = productRepository.findById((long) order.getProductId())
+                .orElseThrow(() -> new RuntimeException("Product not found"));
+
+        double total = product.getPrice() * order.getQuantity();
+
+        order.setTotalPrice(total);
+
+        return orderRepository.save(order);
     }
 
-    public List<String> getOrders() {
-        return orders;
+    public List<Order> getOrders() {
+        return orderRepository.findAll();
     }
 }
