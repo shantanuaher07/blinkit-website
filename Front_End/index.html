@@ -1,217 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Blinkit Clone</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Blinkit Clone</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+font-family: Arial;
+margin:0;
+background:#f5f5f5;
+}
+
+/* Navbar */
+
+nav{
+background:#0f8a2b;
+padding:15px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo{
+color:white;
+font-size:24px;
+}
+
+#searchBox{
+width:40%;
+padding:8px;
+border-radius:5px;
+border:none;
+}
+
+nav button{
+padding:8px 15px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+/* Banner */
+
+.banner{
+text-align:center;
+padding:60px;
+background:#cde6d2;
+font-size:30px;
+}
+
+/* Products */
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:white;
+padding:15px;
+border-radius:10px;
+text-align:center;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.card img{
+width:80px;
+}
+
+.card button{
+background:#0f8a2b;
+color:white;
+border:none;
+padding:8px 15px;
+border-radius:5px;
+cursor:pointer;
+}
+
+</style>
 </head>
+
 <body>
 
-    <!-- Navbar -->
-    <nav>
-        <h1 class="logo">blinkit</h1>
-        <input type="text" placeholder="Search for products...">
-        <button onclick="login()">Login</button>
-    </nav>
+<!-- Navbar -->
 
-    <!-- Banner -->
-    <section class="banner">
-        <h2>Groceries delivered in 10 minutes ⚡</h2>
-    </section>
+<nav>
 
-    <!-- Products -->
-<div class="products">
+<h1 class="logo">blinkit</h1>
 
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/2553/2553691.png">
-<h3>Milk</h3>
-<p>₹50</p>
-<button onclick="addToCart('Milk')">Add to Cart</button>
+<input type="text" id="searchBox" placeholder="Search products..." onkeyup="searchProduct()">
+
+<button>Login</button>
+<button onclick="window.location.href='cart.html'">Cart 🛒</button>
+
+</nav>
+
+<!-- Banner -->
+
+<section class="banner">
+Groceries delivered in 10 minutes ⚡
+</section>
+
+<!-- Products -->
+
+<div class="products" id="productList">
+
 </div>
 
-<div class="card">
+<script>
+
+let products = [
+
+{name:"Bread",price:30},
+{name:"Chips",price:30},
+{name:"Chocolate",price:40},
+{name:"Biscuits",price:25},
+{name:"Noodles",price:20},
+{name:"Cold Drink",price:40},
+{name:"Eggs",price:90},
+{name:"Butter",price:55},
+{name:"Cheese",price:120},
+{name:"Apple",price:150},
+
+{name:"Banana",price:40},
+{name:"Orange",price:80},
+{name:"Milk",price:60},
+{name:"Curd",price:50},
+{name:"Paneer",price:220},
+{name:"Rice",price:70},
+{name:"Wheat",price:65},
+{name:"Sugar",price:45},
+{name:"Salt",price:20},
+{name:"Tea",price:120},
+
+{name:"Coffee",price:150},
+{name:"Maggi",price:14},
+{name:"Tomato",price:30},
+{name:"Potato",price:25},
+{name:"Onion",price:35},
+{name:"Cabbage",price:40},
+{name:"Carrot",price:50},
+{name:"Peas",price:60},
+{name:"Capsicum",price:70},
+{name:"Cucumber",price:35},
+
+{name:"Water Bottle",price:20},
+{name:"Juice",price:45},
+{name:"Ice Cream",price:90},
+{name:"Cake",price:250},
+{name:"Cookies",price:60},
+{name:"Popcorn",price:40},
+{name:"Dry Fruits",price:350},
+{name:"Almonds",price:600},
+{name:"Cashew",price:700},
+{name:"Raisin",price:200},
+
+{name:"Detergent",price:150},
+{name:"Soap",price:35},
+{name:"Shampoo",price:120},
+{name:"Toothpaste",price:90},
+{name:"Toothbrush",price:40},
+{name:"Face Wash",price:180},
+{name:"Body Lotion",price:220},
+{name:"Handwash",price:80},
+{name:"Sanitizer",price:60},
+{name:"Tissue",price:50}
+
+];
+
+let productList=document.getElementById("productList");
+
+products.forEach(p=>{
+
+productList.innerHTML+=`
+
+<div class="card product">
+
 <img src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png">
-<h3>Bread</h3>
-<p>₹30</p>
-<button onclick="addToCart('Bread')">Add to Cart</button>
+
+<h3>${p.name}</h3>
+
+<p>₹${p.price}</p>
+
+<button onclick="addToCart('${p.name}',${p.price})">Add to Cart</button>
+
 </div>
 
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png">
-<h3>Chips</h3>
-<p>₹30</p>
-<button onclick="addToCart('Chips')">Add to Cart</button>
-</div>
+`;
 
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/3081/3081840.png">
-<h3>Chocolate</h3>
-<p>₹40</p>
-<button onclick="addToCart('Chocolate')">Add to Cart</button>
-</div>
+});
 
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/3143/3143643.png">
-<h3>Biscuits</h3>
-<p>₹25</p>
-<button onclick="addToCart('Biscuits')">Add to Cart</button>
-</div>
+function searchProduct(){
 
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/135/135620.png">
-<h3>Noodles</h3>
-<p>₹20</p>
-<button onclick="addToCart('Noodles')">Add to Cart</button>
-</div>
+let input=document.getElementById("searchBox").value.toLowerCase();
 
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/2405/2405479.png">
-<h3>Cold Drink</h3>
-<p>₹40</p>
-<button onclick="addToCart('Cold Drink')">Add to Cart</button>
-</div>
+let cards=document.getElementsByClassName("product");
 
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/590/590685.png">
-<h3>Eggs</h3>
-<p>₹90</p>
-<button onclick="addToCart('Eggs')">Add to Cart</button>
-</div>
+for(let i=0;i<cards.length;i++){
 
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/590/590682.png">
-<h3>Butter</h3>
-<p>₹55</p>
-<button onclick="addToCart('Butter')">Add to Cart</button>
-</div>
+let name=cards[i].getElementsByTagName("h3")[0].innerText.toLowerCase();
 
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/2718/2718224.png">
-<h3>Cheese</h3>
-<p>₹120</p>
-<button onclick="addToCart('Cheese')">Add to Cart</button>
-</div>
+if(name.includes(input)){
+cards[i].style.display="block";
+}else{
+cards[i].style.display="none";
+}
 
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/415/415733.png">
-<h3>Apple</h3>
-<p>₹150</p>
-<button onclick="addToCart('Apple')">Add to Cart</button>
-</div>
+}
 
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/590/590683.png">
-<h3>Banana</h3>
-<p>₹50</p>
-<button onclick="addToCart('Banana')">Add to Cart</button>
-</div>
+}
 
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/590/590684.png">
-<h3>Mango</h3>
-<p>₹120</p>
-<button onclick="addToCart('Mango')">Add to Cart</button>
-</div>
+function addToCart(name,price){
 
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/415/415682.png">
-<h3>Orange</h3>
-<p>₹80</p>
-<button onclick="addToCart('Orange')">Add to Cart</button>
-</div>
+alert(name+" added to cart");
 
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/6866/6866520.png">
-<h3>Watermelon</h3>
-<p>₹60</p>
-<button onclick="addToCart('Watermelon')">Add to Cart</button>
-</div>
+}
 
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/2935/2935394.png">
-<h3>Tea</h3>
-<p>₹90</p>
-<button onclick="addToCart('Tea')">Add to Cart</button>
-</div>
+</script>
 
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/924/924514.png">
-<h3>Coffee</h3>
-<p>₹150</p>
-<button onclick="addToCart('Coffee')">Add to Cart</button>
-</div>
-
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/1046/1046786.png">
-<h3>Sugar</h3>
-<p>₹45</p>
-<button onclick="addToCart('Sugar')">Add to Cart</button>
-</div>
-
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/1046/1046791.png">
-<h3>Salt</h3>
-<p>₹20</p>
-<button onclick="addToCart('Salt')">Add to Cart</button>
-</div>
-
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/706/706164.png">
-<h3>Rice</h3>
-<p>₹110</p>
-<button onclick="addToCart('Rice')">Add to Cart</button>
-</div>
-
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/1046/1046769.png">
-<h3>Flour</h3>
-<p>₹60</p>
-<button onclick="addToCart('Flour')">Add to Cart</button>
-</div>
-
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/1046/1046770.png">
-<h3>Cooking Oil</h3>
-<p>₹180</p>
-<button onclick="addToCart('Oil')">Add to Cart</button>
-</div>
-
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/3075/3075974.png">
-<h3>Ketchup</h3>
-<p>₹90</p>
-<button onclick="addToCart('Ketchup')">Add to Cart</button>
-</div>
-
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/3081/3081838.png">
-<h3>Mayonnaise</h3>
-<p>₹120</p>
-<button onclick="addToCart('Mayonnaise')">Add to Cart</button>
-</div>
-
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/1046/1046782.png">
-<h3>Paneer</h3>
-<p>₹90</p>
-<button onclick="addToCart('Paneer')">Add to Cart</button>
-</div>
-
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/1046/1046778.png">
-<h3>Curd</h3>
-<p>₹40</p>
-<button onclick="addToCart('Curd')">Add to Cart</button>
-</div>
-
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/3081/3081846.png">
-<h3>Ice Cream</h3>
-<p>₹120</p>
-<button onclick="addToCart('Ice Cream')">Add to Cart</button>
-</div>
-</div>
-    </section>
-
-    <script src="script.js"></script>
 </body>
 </html>

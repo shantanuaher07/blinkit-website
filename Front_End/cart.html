@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Cart</title>
+
+<title>Your Cart</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body onload="loadCart()">
 
 <nav>
-<h1 class="logo">blinkit Cart</h1>
-<button onclick="window.location.href='index.html'">Back</button>
+
+<h1 class="logo">Blinkit Cart</h1>
+
+<button onclick="window.location.href='index.html'">Home</button>
+
 </nav>
 
-<h2 style="text-align:center">Your Cart</h2>
+<h2 class="cart-title">Your Selected Products</h2>
 
-<div id="cartItems" class="products"></div>
+<div id="cartItems" class="cart-list"></div>
+
+<div id="totalPrice" class="total-box"></div>
+
+</body>
 
 <script src="script.js"></script>
 
-</body>
 </html>
