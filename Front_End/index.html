@@ -6,35 +6,67 @@
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav>
-        <h1 class="logo">blinkit</h1>
-        <input type="text" placeholder="Search for products...">
-        <button onclick="login()">Login</button>
-    </nav>
+<!-- Navbar -->
+<nav>
+    <h1 class="logo">blinkit</h1>
+    <input type="text" placeholder="Search for products...">
+    <button onclick="login()">Login</button>
+</nav>
 
-    <!-- Banner -->
-    <section class="banner">
-        <h2>Groceries delivered in 10 minutes ⚡</h2>
-    </section>
+<!-- Banner -->
+<section class="banner">
+    <h2>Groceries delivered in 10 minutes ⚡</h2>
+</section>
 
-    <!-- Products -->
-    <section class="products">
-        <div class="card">
-            <img src="https://via.placeholder.com/150">
-            <h3>Milk</h3>
-            <p>₹50</p>
-            <button onclick="addToCart('Milk')">Add to Cart</button>
-        </div>
+<!-- Products -->
+<section class="products">
 
-        <div class="card">
-            <img src="https://via.placeholder.com/150">
-            <h3>Bread</h3>
-            <p>₹30</p>
-            <button onclick="addToCart('Bread')">Add to Cart</button>
-        </div>
-    </section>
+<div class="card">
+<img src="https://via.placeholder.com/150">
+<h3>Milk</h3>
+<p>₹50</p>
+<button onclick="addToCart('Milk',50)">Add to Cart</button>
+</div>
 
-    <script src="script.js"></script>
+<div class="card">
+<img src="https://via.placeholder.com/150">
+<h3>Bread</h3>
+<p>₹30</p>
+<button onclick="addToCart('Bread',30)">Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/150">
+<h3>Eggs</h3>
+<p>₹80</p>
+<button onclick="addToCart('Eggs',80)">Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/150">
+<h3>Rice</h3>
+<p>₹120</p>
+<button onclick="addToCart('Rice',120)">Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/150">
+<h3>Apples</h3>
+<p>₹150</p>
+<button onclick="addToCart('Apples',150)">Add to Cart</button>
+</div>
+
+</section>
+
+<!-- Cart -->
+<section class="cart">
+<h2>Your Cart 🛒</h2>
+<ul id="cart-items"></ul>
+<h3>Total: ₹<span id="total">0</span></h3>
+<button onclick="clearCart()">Clear Cart</button>
+</section>
+
+<script src="script.js"></script>
+
 </body>
 </html>
