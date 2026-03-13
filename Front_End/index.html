@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Blinkit Clone</title>
-<link rel="stylesheet" href="style.css">
 
 <style>
 
@@ -87,69 +86,6 @@ cursor:pointer;
 <body>
 
 <!-- Navbar -->
-<<<<<<< HEAD
-<nav>
-    <h1 class="logo">blinkit</h1>
-    <input type="text" placeholder="Search for products...">
-    <button onclick="login()">Login</button>
-</nav>
-
-<!-- Banner -->
-<section class="banner">
-    <h2>Groceries delivered in 10 minutes ⚡</h2>
-</section>
-
-<!-- Products -->
-<section class="products">
-
-<div class="card">
-<img src="https://via.placeholder.com/150">
-<h3>Milk</h3>
-<p>₹50</p>
-<button onclick="addToCart('Milk',50)">Add to Cart</button>
-</div>
-
-<div class="card">
-<img src="https://via.placeholder.com/150">
-<h3>Bread</h3>
-<p>₹30</p>
-<button onclick="addToCart('Bread',30)">Add to Cart</button>
-</div>
-
-<div class="card">
-<img src="https://via.placeholder.com/150">
-<h3>Eggs</h3>
-<p>₹80</p>
-<button onclick="addToCart('Eggs',80)">Add to Cart</button>
-</div>
-
-<div class="card">
-<img src="https://via.placeholder.com/150">
-<h3>Rice</h3>
-<p>₹120</p>
-<button onclick="addToCart('Rice',120)">Add to Cart</button>
-</div>
-
-<div class="card">
-<img src="https://via.placeholder.com/150">
-<h3>Apples</h3>
-<p>₹150</p>
-<button onclick="addToCart('Apples',150)">Add to Cart</button>
-</div>
-
-</section>
-
-<!-- Cart -->
-<section class="cart">
-<h2>Your Cart 🛒</h2>
-<ul id="cart-items"></ul>
-<h3>Total: ₹<span id="total">0</span></h3>
-<button onclick="clearCart()">Clear Cart</button>
-</section>
-
-<script src="script.js"></script>
-=======
-
 <nav>
 
 <h1 class="logo">blinkit</h1>
@@ -162,16 +98,12 @@ cursor:pointer;
 </nav>
 
 <!-- Banner -->
-
 <section class="banner">
 Groceries delivered in 10 minutes ⚡
 </section>
 
 <!-- Products -->
-
-<div class="products" id="productList">
-
-</div>
+<div class="products" id="productList"></div>
 
 <script>
 
@@ -197,40 +129,7 @@ let products = [
 {name:"Wheat",price:65},
 {name:"Sugar",price:45},
 {name:"Salt",price:20},
-{name:"Tea",price:120},
-
-{name:"Coffee",price:150},
-{name:"Maggi",price:14},
-{name:"Tomato",price:30},
-{name:"Potato",price:25},
-{name:"Onion",price:35},
-{name:"Cabbage",price:40},
-{name:"Carrot",price:50},
-{name:"Peas",price:60},
-{name:"Capsicum",price:70},
-{name:"Cucumber",price:35},
-
-{name:"Water Bottle",price:20},
-{name:"Juice",price:45},
-{name:"Ice Cream",price:90},
-{name:"Cake",price:250},
-{name:"Cookies",price:60},
-{name:"Popcorn",price:40},
-{name:"Dry Fruits",price:350},
-{name:"Almonds",price:600},
-{name:"Cashew",price:700},
-{name:"Raisin",price:200},
-
-{name:"Detergent",price:150},
-{name:"Soap",price:35},
-{name:"Shampoo",price:120},
-{name:"Toothpaste",price:90},
-{name:"Toothbrush",price:40},
-{name:"Face Wash",price:180},
-{name:"Body Lotion",price:220},
-{name:"Handwash",price:80},
-{name:"Sanitizer",price:60},
-{name:"Tissue",price:50}
+{name:"Tea",price:120}
 
 ];
 
@@ -277,13 +176,10 @@ cards[i].style.display="none";
 }
 
 function addToCart(name,price){
-
 alert(name+" added to cart");
-
 }
 
 </script>
->>>>>>> b6ae39c6b318c9cc9b778b1e10694ba78ac0ad6e
 
 </body>
 </html>
