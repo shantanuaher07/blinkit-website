@@ -1,51 +1,68 @@
-const express = require("express");
-const mysql = require("mysql2");
+const express = require("express")
+const mysql = require("mysql2")
+const cors = require("cors")
 
-const app = express();
+const app = express()
+
+app.use(cors())
+app.use(express.json())
 
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "RAJPUT1718",
-  database: "blinkit"
-});
+host:"localhost",
+user:"root",
+password:"",
+database:"blinkit"
+})
 
-db.connect((err) => {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log("MySQL Connected");
-  }
-});
+db.connect(err=>{
+if(err) console.log(err)
+else console.log("MySQL Connected")
+})
 
-app.get("/", (req, res) => {
-  res.send("Blinkit server running");
-});
 
-app.listen(3000, () => {
-  console.log("Server running on port 3000");
-});
-app.get("/addproduct", (req, res) => {
+// SIGNUP API
+app.post("/signup",(req,res)=>{
 
-  const sql = "INSERT INTO products (name, price, category) VALUES ('Milk', 50, 'Dairy')";
+const {email,password}=req.body
 
-  db.query(sql, (err, result) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send("Product inserted successfully");
-    }
-  });
+db.query(
+"INSERT INTO users (email,password) VALUES (?,?)",
+[email,password],
+(err,result)=>{
 
-});
-app.get("/products", (req, res) => {
+if(err){
+res.json({success:false})
+}
+else{
+res.json({success:true})
+}
 
-  db.query("SELECT * FROM products", (err, result) => {
-    if (err) {
-      console.log(err);
-    } else { addEventListener
-      res.json(result);
-    }
-  });
+})
 
-});
+})
+
+
+// LOGIN API
+app.post("/login",(req,res)=>{
+
+const {email,password}=req.body
+
+db.query(
+"SELECT * FROM users WHERE email=? AND password=?",
+[email,password],
+(err,result)=>{
+
+if(result.length>0){
+res.json({success:true})
+}
+else{
+res.json({success:false})
+}
+
+})
+
+})
+
+app.listen(3000,()=>{
+console.log("Server running on port 3000")
+})
