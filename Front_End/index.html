@@ -1,12 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Blinkit Clone</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Blinkit Clone</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+font-family: Arial;
+margin:0;
+background:#f5f5f5;
+}
+
+/* Navbar */
+
+nav{
+background:#0f8a2b;
+padding:15px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo{
+color:white;
+font-size:24px;
+}
+
+#searchBox{
+width:40%;
+padding:8px;
+border-radius:5px;
+border:none;
+}
+
+nav button{
+padding:8px 15px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+/* Banner */
+
+.banner{
+text-align:center;
+padding:60px;
+background:#cde6d2;
+font-size:30px;
+}
+
+/* Products */
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:white;
+padding:15px;
+border-radius:10px;
+text-align:center;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.card img{
+width:80px;
+}
+
+.card button{
+background:#0f8a2b;
+color:white;
+border:none;
+padding:8px 15px;
+border-radius:5px;
+cursor:pointer;
+}
+
+</style>
 </head>
+
 <body>
 
 <!-- Navbar -->
+<<<<<<< HEAD
 <nav>
     <h1 class="logo">blinkit</h1>
     <input type="text" placeholder="Search for products...">
@@ -67,6 +148,142 @@
 </section>
 
 <script src="script.js"></script>
+=======
+
+<nav>
+
+<h1 class="logo">blinkit</h1>
+
+<input type="text" id="searchBox" placeholder="Search products..." onkeyup="searchProduct()">
+
+<button>Login</button>
+<button onclick="window.location.href='cart.html'">Cart 🛒</button>
+
+</nav>
+
+<!-- Banner -->
+
+<section class="banner">
+Groceries delivered in 10 minutes ⚡
+</section>
+
+<!-- Products -->
+
+<div class="products" id="productList">
+
+</div>
+
+<script>
+
+let products = [
+
+{name:"Bread",price:30},
+{name:"Chips",price:30},
+{name:"Chocolate",price:40},
+{name:"Biscuits",price:25},
+{name:"Noodles",price:20},
+{name:"Cold Drink",price:40},
+{name:"Eggs",price:90},
+{name:"Butter",price:55},
+{name:"Cheese",price:120},
+{name:"Apple",price:150},
+
+{name:"Banana",price:40},
+{name:"Orange",price:80},
+{name:"Milk",price:60},
+{name:"Curd",price:50},
+{name:"Paneer",price:220},
+{name:"Rice",price:70},
+{name:"Wheat",price:65},
+{name:"Sugar",price:45},
+{name:"Salt",price:20},
+{name:"Tea",price:120},
+
+{name:"Coffee",price:150},
+{name:"Maggi",price:14},
+{name:"Tomato",price:30},
+{name:"Potato",price:25},
+{name:"Onion",price:35},
+{name:"Cabbage",price:40},
+{name:"Carrot",price:50},
+{name:"Peas",price:60},
+{name:"Capsicum",price:70},
+{name:"Cucumber",price:35},
+
+{name:"Water Bottle",price:20},
+{name:"Juice",price:45},
+{name:"Ice Cream",price:90},
+{name:"Cake",price:250},
+{name:"Cookies",price:60},
+{name:"Popcorn",price:40},
+{name:"Dry Fruits",price:350},
+{name:"Almonds",price:600},
+{name:"Cashew",price:700},
+{name:"Raisin",price:200},
+
+{name:"Detergent",price:150},
+{name:"Soap",price:35},
+{name:"Shampoo",price:120},
+{name:"Toothpaste",price:90},
+{name:"Toothbrush",price:40},
+{name:"Face Wash",price:180},
+{name:"Body Lotion",price:220},
+{name:"Handwash",price:80},
+{name:"Sanitizer",price:60},
+{name:"Tissue",price:50}
+
+];
+
+let productList=document.getElementById("productList");
+
+products.forEach(p=>{
+
+productList.innerHTML+=`
+
+<div class="card product">
+
+<img src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png">
+
+<h3>${p.name}</h3>
+
+<p>₹${p.price}</p>
+
+<button onclick="addToCart('${p.name}',${p.price})">Add to Cart</button>
+
+</div>
+
+`;
+
+});
+
+function searchProduct(){
+
+let input=document.getElementById("searchBox").value.toLowerCase();
+
+let cards=document.getElementsByClassName("product");
+
+for(let i=0;i<cards.length;i++){
+
+let name=cards[i].getElementsByTagName("h3")[0].innerText.toLowerCase();
+
+if(name.includes(input)){
+cards[i].style.display="block";
+}else{
+cards[i].style.display="none";
+}
+
+}
+
+}
+
+function addToCart(name,price){
+
+alert(name+" added to cart");
+
+}
+
+</script>
+>>>>>>> b6ae39c6b318c9cc9b778b1e10694ba78ac0ad6e
 
 </body>
 </html>

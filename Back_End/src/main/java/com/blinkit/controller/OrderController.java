@@ -1,22 +1,26 @@
 package com.blinkit.controller;
 
+import com.blinkit.model.Order;
+import com.blinkit.service.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import java.util.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
 
-    List<String> orders = new ArrayList<>();
+    @Autowired
+    private OrderService service;
 
     @PostMapping("/place")
-    public String placeOrder(@RequestBody String order) {
-        orders.add(order);
-        return "Order placed successfully";
+    public Order placeOrder(@RequestBody Order order) {
+        return service.placeOrder(order);
     }
 
-    @GetMapping
-    public List<String> getOrders() {
-        return orders;
+    @GetMapping("/all")
+    public List<Order> getOrders() {
+        return service.getOrders();
     }
 }

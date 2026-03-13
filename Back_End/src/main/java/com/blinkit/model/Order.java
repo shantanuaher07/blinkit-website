@@ -1,33 +1,31 @@
 package com.blinkit.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "orders")   // ✅ Fix: rename table
+@Table(name = "orders")
 public class Order {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private int userId;
+    private int productId;
+    private int quantity;
     private double totalPrice;
 
     public Order() {}
 
-    public Order(int id, int userId, double totalPrice) {
-        this.id = id;
+    public Order(int userId, int productId, int quantity, double totalPrice) {
         this.userId = userId;
+        this.productId = productId;
+        this.quantity = quantity;
         this.totalPrice = totalPrice;
     }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getUserId() {
@@ -36,6 +34,22 @@ public class Order {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public double getTotalPrice() {
