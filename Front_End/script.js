@@ -76,4 +76,42 @@ function searchProduct() {
         }
     }
 }
+function goToCheckout(){
+window.location.href="checkout.html";
+}
+function placeOrder(event){
+event.preventDefault();
+
+const form = event.target;
+
+const orderData = {
+name: form.name.value,
+phone: form.phone.value,
+address: form.address.value,
+city: form.city.value,
+payment: form.payment.value
+};
+
+fetch("http://localhost:3000/place-order",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body: JSON.stringify(orderData)
+})
+.then(res=>res.text())
+.then(data=>{
+
+alert("Order Placed Successfully!");
+
+localStorage.removeItem("cart");
+
+window.location.href="index.html";
+
+})
+.catch(err=>{
+console.log(err);
+});
+
+}
 </script>
