@@ -1,4 +1,4 @@
-🛒 Blinkit Clone – Grocery Delivery Web App
+**🛒 Blinkit Clone – Grocery Delivery Web App**
 
 A Blinkit Clone built using Spring Boot (Java) and basic Web technologies that simulates a simple grocery delivery platform. The application allows users to view products, interact with a backend API, and manage product data through RESTful services.
 
