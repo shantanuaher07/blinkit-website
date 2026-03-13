@@ -36,6 +36,10 @@ Git & GitHub.
 
 📂 Project Structure
 
-![Cart](images/Screenshot 2026-03-13 (1).png)
+## Website Preview
 
 ![Homepage](images/Screenshot 2026-03-13.png)
+
+## Cart System
+
+![Cart](images/Screenshot 2026-03-13 (1).png)

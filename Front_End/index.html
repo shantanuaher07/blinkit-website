@@ -45,9 +45,17 @@ cursor:pointer;
 
 .banner{
 text-align:center;
-padding:60px;
+padding:40px;
 background:#cde6d2;
-font-size:30px;
+font-size:28px;
+}
+
+/* Category */
+
+.category{
+padding:20px;
+font-size:22px;
+font-weight:bold;
 }
 
 /* Products */
@@ -85,30 +93,27 @@ cursor:pointer;
 
 <body>
 
-<!-- Navbar -->
 <nav>
 
-<h1 class="logo">blinkit</h1>
+<h1 class="logo">Blinkit</h1>
 
 <input type="text" id="searchBox" placeholder="Search products..." onkeyup="searchProduct()">
 
-<button>Login</button>
 <button onclick="window.location.href='cart.html'">Cart 🛒</button>
 
 </nav>
 
-<!-- Banner -->
 <section class="banner">
 Groceries delivered in 10 minutes ⚡
 </section>
 
-<!-- Products -->
-<div class="products" id="productList"></div>
+<div id="store"></div>
 
 <script>
 
-let products = [
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+<<<<<<< HEAD
 {name:"Bread",price:30},
 {name:"Chips",price:30},
 {name:"Chocolate",price:40},
@@ -129,14 +134,44 @@ let products = [
 {name:"Sugar",price:45},
 {name:"Salt",price:20},
 {name:"Tea",price:120}
+=======
+let products=[
+
+{name:"Rice",price:70,category:"Grocery"},
+{name:"Sugar",price:45,category:"Grocery"},
+{name:"Tea",price:120,category:"Grocery"},
+
+{name:"Milk",price:60,category:"Dairy"},
+{name:"Butter",price:55,category:"Dairy"},
+{name:"Cheese",price:120,category:"Dairy"},
+{name:"Curd",price:50,category:"Dairy"},
+{name:"Paneer",price:220,category:"Dairy"},
+
+{name:"Apple",price:150,category:"Fruits"},
+{name:"Banana",price:40,category:"Fruits"},
+{name:"Orange",price:80,category:"Fruits"},
+
+{name:"Potato",price:25,category:"Vegetables"},
+{name:"Tomato",price:30,category:"Vegetables"},
+{name:"Onion",price:35,category:"Vegetables"}
+>>>>>>> e8a0b4d307c7fa77336b3ac4f768e639bf090924
 
 ];
 
-let productList=document.getElementById("productList");
+let store=document.getElementById("store");
 
-products.forEach(p=>{
+let categories=[...new Set(products.map(p=>p.category))];
 
-productList.innerHTML+=`
+categories.forEach(cat=>{
+
+let section=`<div class="category">${cat}</div>
+<div class="products">`;
+
+products
+.filter(p=>p.category===cat)
+.forEach(p=>{
+
+section+=`
 
 <div class="card product">
 
@@ -153,6 +188,22 @@ productList.innerHTML+=`
 `;
 
 });
+
+section+=`</div>`;
+
+store.innerHTML+=section;
+
+});
+
+function addToCart(name,price){
+
+cart.push({name,price});
+
+localStorage.setItem("cart",JSON.stringify(cart));
+
+alert(name+" added to cart");
+
+}
 
 function searchProduct(){
 
@@ -172,10 +223,6 @@ cards[i].style.display="none";
 
 }
 
-}
-
-function addToCart(name,price){
-alert(name+" added to cart");
 }
 
 </script>
