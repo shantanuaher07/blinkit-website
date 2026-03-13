@@ -38,8 +38,8 @@ Git & GitHub.
 
 ## Website Preview
 
-![Homepage](images/Screenshot 2026-03-13.png)
+![Homepage](images/homepage.png)
 
 ## Cart System
 
-![Cart](images/Screenshot 2026-03-13 (1).png)
+![Cart](images/cart.png)
